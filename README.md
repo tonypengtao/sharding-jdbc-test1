@@ -6,6 +6,45 @@ sharding-jdbc test project
 - ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring JDBC Template或直接使用JDBC。
 - 目前已经进入Apache孵化器。以4.x版本为新的发布开始
 
+
+## 示例建表脚本  
+
+```
+CREATE TABLE `t_address` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `code` varchar(64) DEFAULT NULL COMMENT '编码',
+  `name` varchar(64) DEFAULT NULL COMMENT '名称',
+  `pid` varchar(64) NOT NULL DEFAULT '0' COMMENT '父id',
+  `type` int(11) DEFAULT NULL COMMENT '1国家2省3市4县区',
+  `lit` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_user0` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(64) DEFAULT NULL COMMENT '名称',
+  `city_id` int(12) DEFAULT NULL COMMENT '城市',
+  `sex` tinyint(1) DEFAULT NULL COMMENT '性别',
+  `phone` varchar(32) DEFAULT NULL COMMENT '电话',
+  `email` varchar(32) DEFAULT NULL COMMENT '邮箱',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `password` varchar(32) DEFAULT NULL COMMENT '密码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `t_user1` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(64) DEFAULT NULL COMMENT '名称',
+  `city_id` int(12) DEFAULT NULL COMMENT '城市',
+  `sex` tinyint(1) DEFAULT NULL COMMENT '性别',
+  `phone` varchar(32) DEFAULT NULL COMMENT '电话',
+  `email` varchar(32) DEFAULT NULL COMMENT '邮箱',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `password` varchar(32) DEFAULT NULL COMMENT '密码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
 ## 官方配置示例  
 
 ### 数据分片  
