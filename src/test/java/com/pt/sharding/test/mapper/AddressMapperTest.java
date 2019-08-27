@@ -32,7 +32,7 @@ public class AddressMapperTest {
 	@Test
 	public void get() {
 		long s = System.currentTimeMillis();
-		Address addr = addressMapper.get(373042207940149248l);
+		Address addr = addressMapper.get(373163357634560000l);
 		long e = System.currentTimeMillis();
 		System.out.println("---- time: "+(e-s));
 		System.out.println(addr);
