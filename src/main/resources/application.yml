@@ -2,7 +2,7 @@ spring:
   application:
     name: shatding-springboot-mybatis
   profiles:
-    active: ms 
+    active: dbshard 
     
 server:
   port: 8080
